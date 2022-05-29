@@ -1,5 +1,6 @@
 import 'package:corona/constants.dart';
 import 'package:corona/home/component/projects.dart';
+import 'package:corona/home/component/recommend.dart';
 import 'package:corona/home/homeBanner.dart';
 import 'package:corona/home/menu.dart';
 import 'package:corona/screens/main/main_screen.dart';
@@ -22,16 +23,7 @@ class HomeScreen extends StatelessWidget {
 // projects
         project(),
         // recomendation
-        SizedBox(
-          height: defaultPadding,
-        ),
-        Text(
-          "Recommendations",
-          style: Theme.of(context).textTheme.headline5!.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-        ),
+        recommend(context),
       ],
     );
   }

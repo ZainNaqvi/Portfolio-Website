@@ -1,6 +1,7 @@
 import 'package:corona/constants.dart';
 import 'package:corona/home/component/animatedtext.dart';
 import 'package:corona/home/component/button.dart';
+import 'package:corona/responsive.dart';
 import 'package:flutter/material.dart';
 
 class homeBanner extends StatelessWidget {
@@ -11,7 +12,7 @@ class homeBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 3,
+      aspectRatio: Responsive.isMobile(context) ? 2.5 : 3,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -30,10 +31,16 @@ class homeBanner extends StatelessWidget {
               children: [
                 Text(
                   "Discover my Amazing \nArt Space!",
-                  style: Theme.of(context).textTheme.headline3!.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  maxLines: Responsive.isMobile(context) ? 1 : 2,
+                  style: Responsive.isDesktop(context)
+                      ? Theme.of(context).textTheme.headline3!.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          )
+                      : Theme.of(context).textTheme.headline5!.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                 ),
                 // animated tet for the banner
                 SizedBox(
@@ -45,7 +52,8 @@ class homeBanner extends StatelessWidget {
                   height: defaultPadding,
                 ),
 // explore button
-                elevatedbutton(context),
+
+                if (!Responsive.isMobileLarge(context)) elevatedbutton(context),
               ],
             ),
           ),
